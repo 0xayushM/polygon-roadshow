@@ -1,26 +1,76 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: paragraph;
+  src: url('../public/SourceCodePro-VariableFont_wght.ttf');
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: HeadingFont;
+  src: url('../public/FontsFree-Net-Mollie-Glaston.ttf');
 }
 
+@layer base {
+  * {
+    @apply bg-[#e9d5ef] top-0 m-0
+  }
+  h1 {
+    @apply md:text-8xl text-6xl tracking-[0.01em]
+  }
+  p {
+    @apply text-xl md:text-2xl font-light tracking-[0]
+  }
+  li {
+    @apply tracking-[0em]
+  }
+}
 * {
-  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+h1 {
+  font-family: 'HeadingFont';
+  font-weight: bold;
+}
+p, button, li {
+  font-family: 'paragraph';
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+#scroll-container {
+  overflow:hidden;
+  white-space: nowrap;
+}
+#scroll-text {
+  font-family: 'paragraph';
+  display: inline-block;
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -moz-animation: my-animation 600s linear infinite;
+  -webkit-animation: my-animation 600s linear infinite;
+  animation: my-animation 600s linear infinite;
+}
+
+@-moz-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(0);
+  } to {
+    -webkit-transform: translateX(100%);
   }
-  body {
-    color: white;
-    background: black;
+}
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  } to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
+}
+
+#navbar {
+  transition: top 0.5s;
 }
